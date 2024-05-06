@@ -4,10 +4,9 @@ import "./App.css";
 import Description from "../Description/Description";
 import Options from "../Options/Options";
 import Feedback from "../Feedback/Feedback";
+import Notification from "../Notification/Notification";
 
 function App() {
-
-
   const [feedback, setFeedback] = useState(() => {
     const data = JSON.parse(localStorage.getItem("saved-feedback"));
     if (!data)
@@ -41,7 +40,7 @@ function App() {
   const { good, neutral, bad } = feedback;
   const totalFeedback = good + neutral + bad;
   const positiveFeedback = Math.round((good / totalFeedback) * 100);
-  
+
   return (
     <>
       <Description />
@@ -57,7 +56,7 @@ function App() {
           percentage={positiveFeedback}
         />
       ) : (
-        <p>No feedback yet</p>
+        <Notification/>
       )}
     </>
   );
